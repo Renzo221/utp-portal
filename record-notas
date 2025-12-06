@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UTP Portal - Inicio Sesión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #fff;
+      color: #000;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .logo span {
+      background-color: black;
+      color: white;
+      padding: 6px 8px;
+      margin-right: 3px;
+      font-family: monospace;
+    }
+    .logo .plus {
+      color: #ef2d51;
+      margin-right: 6px;
+      font-weight: bold;
+      font-size: 28px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    form {
+      max-width: 400px;
+      margin-top: 20px;
+    }
+    label {
+      font-weight: 700;
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: 1.5px solid #aaa;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .field-info {
+      font-size: 13px;
+      color: #555;
+      margin-top: 4px;
+    }
+    .show-password {
+      float: right;
+      margin-top: -30px;
+      margin-right: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #555;
+      user-select: none;
+    }
+    .reset-password {
+      display: block;
+      margin-top: 14px;
+      color: #5a28f7;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button {
+      margin-top: 25px;
+      background-color: #c9d7e6;
+      color: #7a87a1;
+      border: none;
+      padding: 12px 0;
+      width: 100%;
+      font-weight: 700;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .error-message {
+      color: red;
+      margin-top: 15px;
+      font-weight: 600;
+      display: none;
+    }
+    /* Estilos record de notas oculto inicialmente */
+    #recordNotas {
+      display: none;
+      margin-top: 20px;
+      background-color: #eaf1f8;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+    }
+    #recordNotas h2 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    #recordNotas .card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px 18px;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      margin-bottom: 20px;
+    }
+    #recordNotas .card p {
+      margin: 3px 0;
+      font-size: 15px;
+    }
+    #recordNotas .download-button {
+      border: 1.5px solid #5a28f7;
+      color: #5a28f7;
+      font-weight: 600;
+      border-radius: 7px;
+      padding: 8px 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+      font-size: 15px;
+      margin-bottom: 20px;
+      background: transparent;
+    }
+    #recordNotas .download-button:hover {
+      background: #5a28f7;
+      color: #fff;
+    }
+    #recordNotas table {
+      border-collapse: collapse;
+      width: 100%;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+    }
+    #recordNotas thead {
+      background: #f0f0f7;
+      color: #555;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    #recordNotas th, #recordNotas td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    #recordNotas tr:last-child td {
+      border-bottom: none;
+    }
+    #recordNotas .status {
+      padding: 5px 10px;
+      border-radius: 15px;
+      color: white;
+      font-weight: 600;
+      display: inline-block;
+      font-size: 13px;
+      background-color: #216e3a;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login form -->
+  <div id="loginSection">
+    <div class="logo">
+      <span>U</span><span>T</span><span>P</span><span class="plus">+</span>portal
+    </div>
+
+    <h1>¡Hola!</h1>
+    <p>Ingresa tus datos para <strong>iniciar sesión</strong>.</p>
+
+    <form id="loginForm">
+      <label for="usuario">Usuario: código de alumno UTP</label>
+      <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu código UTP" required />
+      <div class="field-info">Ejemplo de usuario: U1533148 (no digitar el @utp.edu.pe)</div>
+
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña" required />
+      <span class="show-password" onclick="togglePassword()">👁️</span>
+
+      <a href="#" class="reset-password">Restablecer contraseña</a>
+
+      <button type="submit">Iniciar sesión</button>
+      <div class="error-message" id="errorMsg">Usuario o contraseña incorrectos.</div>
+    </form>
+  </div>
+
+  <!-- Record de notas oculto hasta login correcto -->
+  <div id="recordNotas">
+    <div class="header">
+      <div class="logo">
+        <span>U</span><span>T</span><span>P</span><span class="plus">+</span>portal
+      </div>
+    </div>
+
+    <h2>Record de notas</h2>
+
+    <div class="card">
+      <p><strong>Alumno:</strong> Renzo Daniel Anibal Salmon Sullon</p>
+      <p><strong>Código:</strong> U25210995</p>
+      <p><strong>Programa:</strong> Ing. de Sistemas e Informática</p>
+      <p><strong>Plan de estudio:</strong> SIST25P3A</p>
+      <p><strong>Resumen de créditos:</strong> Aprobado 16.00</p>
+    </div>
+
+    <button class="download-button" title="Descargar">
+      ⬇ Descargar
+    </button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ciclo</th>
+          <th>Código de curso</th>
+          <th>Curso</th>
+          <th>NRO VEZ</th>
+          <th>Créditos</th>
+          <th>Nota</th>
+          <th>Sección</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Cursos 2025 - Ciclo 2 -->
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000I07N</td>
+          <td>PROBLEMAS Y DESAFÍOS EN EL PERÚ ACTUAL</td>
+          <td>1</td>
+          <td>2.00</td>
+          <td>16</td>
+          <td>14714</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000I0N2</td>
+          <td>MATEMÁTICA Il</td>
+          <td>1</td>
+          <td>3.00</td>
+          <td>14</td>
+          <td>8006</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000N01I</td>
+          <td>COMPRENSIÓN Y REDACCIÓN DE TEXTOS Il</td>
+          <td>1</td>
+          <td>4.00</td>
+          <td>20</td>
+          <td>8028</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000N03I</td>
+          <td>INGLÉS Il</td>
+          <td>1</td>
+          <td>3.00</td>
+          <td>18</td>
+          <td>58991</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000N09I</td>
+          <td>ESTADÍSTICA DESCRIPTIVA Y PROBABILIDADES</td>
+          <td>1</td>
+          <td>2.00</td>
+          <td>18</td>
+          <td>58993</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000VU01</td>
+          <td>INTRODUCCIÓN A LAS TIC</td>
+          <td>1</td>
+          <td>2.00</td>
+          <td>19</td>
+          <td>7197</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Toggle password visibility
+    function togglePassword() {
+      const pwField = document.getElementById('contraseña');
+      if (pwField.type === 'password') {
+        pwField.type = 'text';
+      } else {
+        pwField.type = 'password';
+      }
+    }
+
+    // Login form submit event
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const user = document.getElementById('usuario').value.trim();
+      const password = document.getElementById('contraseña').value;
+
+      // Usuario y contraseña válidos
+      if (user === '76868064' && password === '76868064Salmon') {
+        document.getElementById('errorMsg').style.display = 'none';
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('recordNotas').style.display = 'block';
+      } else {
+        // Mostrar mensaje de error si no coincide
+        document.getElementById('errorMsg').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
