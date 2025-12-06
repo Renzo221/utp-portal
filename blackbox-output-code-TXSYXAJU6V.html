@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UTP Portal - Inicio Sesión</title>
+  <!-- Enlace al CSS externo -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Login form -->
+  <div id="loginSection">
+    <div class="logo">
+      <span>U</span><span>T</span><span>P</span><span class="plus">+</span>portal
+    </div>
+
+    <h1>¡Hola!</h1>
+    <p>Ingresa tus datos para <strong>iniciar sesión</strong>.</p>
+
+    <form id="loginForm">
+      <label for="usuario">Usuario: código de alumno UTP</label>
+      <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu código UTP" required />
+      <div class="field-info">Ejemplo de usuario: U1533148 (no digitar el @utp.edu.pe)</div>
+
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña" required />
+      <span class="show-password" onclick="togglePassword()">👁️</span>
+
+      <a href="#" class="reset-password">Restablecer contraseña</a>
+
+      <button type="submit">Iniciar sesión</button>
+      <div class="error-message" id="errorMsg">Usuario o contraseña incorrectos.</div>
+    </form>
+  </div>
+
+  <!-- Record de notas oculto hasta login correcto -->
+  <div id="recordNotas">
+    <div class="header">
+      <div class="logo">
+        <span>U</span><span>T</span><span>P</span><span class="plus">+</span>portal
+      </div>
+    </div>
+
+    <h2>Record de notas</h2>
+
+    <div class="card">
+      <p><strong>Alumno:</strong> Renzo Daniel Anibal Salmon Sullon</p>
+      <p><strong>Código:</strong> U25210995</p>
+      <p><strong>Programa:</strong> Ing. de Sistemas e Informática</p>
+      <p><strong>Plan de estudio:</strong> SIST25P3A</p>
+      <p><strong>Resumen de créditos:</strong> Aprobado 16.00</p>
+    </div>
+
+    <button class="download-button" onclick="downloadPDF()" title="Descargar">
+      ⬇ Descargar
+    </button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Ciclo</th>
+          <th>Código de curso</th>
+          <th>Curso</th>
+          <th>NRO VEZ</th>
+          <th>Créditos</th>
+          <th>Nota</th>
+          <th>Sección</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Cursos 2025 - Ciclo 2 -->
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000I07N</td>
+          <td>PROBLEMAS Y DESAFÍOS EN EL PERÚ ACTUAL</td>
+          <td>1</td>
+          <td>2.00</td>
+          <td>16</td>
+          <td>14714</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000I0N2</td>
+          <td>MATEMÁTICA Il</td>
+          <td>1</td>
+          <td>3.00</td>
+          <td>14</td>
+          <td>8006</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000N01I</td>
+          <td>COMPRENSIÓN Y REDACCIÓN DE TEXTOS Il</td>
+          <td>1</td>
+          <td>4.00</td>
+          <td>20</td>
+          <td>8028</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000N03I</td>
+          <td>INGLÉS Il</td>
+          <td>1</td>
+          <td>3.00</td>
+          <td>18</td>
+          <td>58991</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000N09I</td>
+          <td>ESTADÍSTICA DESCRIPTIVA Y PROBABILIDADES</td>
+          <td>1</td>
+          <td>2.00</td>
+          <td>18</td>
+          <td>58993</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+        <tr>
+          <td>2025 - Ciclo 2</td>
+          <td>100000VU01</td>
+          <td>INTRODUCCIÓN A LAS TIC</td>
+          <td>1</td>
+          <td>2.00</td>
+          <td>19</td>
+          <td>7197</td>
+          <td><span class="status">Aprobado</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Enlace al JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
